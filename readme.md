@@ -1,6 +1,8 @@
 # React frontend for ArtSpatter
 
-This is the website with JWT authentication.
+This is the website (A React.js client). For the (server) API, see <https://github.com/poikilos/artspatter>.
+
+To report issues, see https://github.com/poikilos/artspatter/issues (Use the search box to see if your issue is listed before adding a new one).
 
 The following commands, other than `yarn start`, have not been tested
 after the switch from npm to yarn.
@@ -10,7 +12,23 @@ Server API (See ../server.js).
 
 This code is based on the create-react-app service-worker template.
 
-This is a React.js client. For the (server) API, see `../readme.md`.
+## Build the client
+- Download asclient or clone the asclient repository.
+- Build the client:
+```
+cd asclient
+yarn
+yarn run build
+```
+- Ensure artspatter is running (See the artspatter readme).
+- Move or copy the `asclient/build` directory to the webroot of your website.
+- The website should work now!
+
+
+(See also: <https://openclassrooms.com/en/courses/4286486-build-web-apps-with-reactjs/4286701-start-serving-and-developing-your-react-app>)
+
+## Security
+- JWT authentication
 
 # Getting Started with Create React App
 
