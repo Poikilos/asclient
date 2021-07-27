@@ -9,7 +9,7 @@ import ImageCard from './imagecard.component.js';
 
 const InfiniteScroll = require('react-infinite-scroll-component');
 const reporting = require("../reporting");
-const API_URL = process.env.API_URL || "http://localhost:5000";
+const API_URL = process.env.API_URL;
 
 
 // Conditional className:
@@ -206,7 +206,7 @@ export default class Home extends Component {
 */
 /*
       <div className="flex">
-        
+
         {this.state.items.map((post) => (
           <img src={API_URL+post.thumb} height="128px" width="128px" />
         ))}

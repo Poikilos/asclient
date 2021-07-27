@@ -9,9 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { faBan } from '@fortawesome/free-solid-svg-icons'
 
-require('dotenv').config();
-const API_URL = process.env.API_URL || "http://localhost:5000";
- 
+const API_URL = process.env.REACT_APP_API_URL;
+
 
 class ImageCard extends Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class ImageCard extends Component {
     // if (!currentUser) this.setState({ redirect: "/home" });
     this.setState({ currentUser: currentUser, userReady: (currentUser ? true : false) });
   }
-  
+
   render() {
     const { currentUser } = this.state;
     return(

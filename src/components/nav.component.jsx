@@ -5,9 +5,10 @@ import AuthService from "../services/auth.service";
 // import '../App.css';
 import { TailwindNavbar } from 'tailwind-navbar-react';
 import '../tailwind.output.css';
-require('dotenv').config();
-const API_URL = process.env.API_URL || "http://localhost:5000";
- 
+const API_URL = process.env.REACT_APP_API_URL;
+if (API_URL == undefined) {
+  console.error("[nav.component] Error API_URL: " + API_URL);
+}
 
 class Nav extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class Nav extends Component {
     */
     AuthService.logout();
   }
-  
+
   render() {
     const { currentUser } = this.state;
     return(
@@ -50,6 +51,13 @@ class Nav extends Component {
       >
         <nav>
           <ul className="items-center justify-between pt-4 text-base lg:flex lg:pt-0">
+            {
+              API_URL ? (
+                ""
+              ) : (
+                <li>Error: API_URL is missing in website .env</li>
+              )
+            }
             <li>
               <Link
                 to={"/home"}
@@ -58,6 +66,7 @@ class Nav extends Component {
                 Home
               </Link>
             </li>
+
             {currentUser ? (
             <React.Fragment>
               <li>
@@ -65,7 +74,7 @@ class Nav extends Component {
                     to={"/profile"}
                     className="block px-0 py-3 border-b-2 border-transparent lg:p-4 hover:border-indigo-400"
                     >
-                    {currentUser.username}'s profile
+                    {currentUser.username}&apos;s profile
                 </Link>
               </li>
               <li>

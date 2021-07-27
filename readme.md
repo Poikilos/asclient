@@ -12,8 +12,18 @@ Server API (See ../server.js).
 
 This code is based on the create-react-app service-worker template.
 
-## Build the client
+## Configure & Build the client
 - Download asclient or clone the asclient repository.
+- Create your `asclient/.env` similar to defaults below.
+  - `PORT`'s default comes from `yarn start` internally which uses 3000 or the `PORT` environment variable.
+  - The port in the `REACT_APP_API_URL` in "asclient/.env" must match `API_PORT` in "artspatter/.env" on the API server.
+```
+cd asclient
+cat > .env <<END
+PORT = 54445
+REACT_APP_API_URL = http://localhost:56765
+END
+```
 - Build the client:
 ```
 cd asclient
@@ -24,6 +34,12 @@ yarn run build
 - Move or copy the `asclient/build` directory to the webroot of your website.
 - The website should work now!
 
+## Run the development client
+- Ensure that the server is running. If it is not running on the URL below, change it.
+```
+cd asclient
+yarn start
+```
 
 (See also: <https://openclassrooms.com/en/courses/4286486-build-web-apps-with-reactjs/4286701-start-serving-and-developing-your-react-app>)
 
@@ -41,7 +57,7 @@ In the project directory, you can run:
 ### `yarn start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:54445](http://localhost:54445) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
